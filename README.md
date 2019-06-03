@@ -56,3 +56,5 @@ module "confirm_cors" {
 ```
 
 Setting `discard_default_headers` variable to true will result in including only the headers defined in `headers` variable.
+
+forked from mewa/terraform-aws-apigateway-cors
