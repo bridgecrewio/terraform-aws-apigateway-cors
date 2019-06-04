@@ -4,10 +4,12 @@ variable "enable" {
 
 variable "api" {
   description = "id of an aws_api_gateway_rest_api resource"
+  type = "string"
 }
 
-variable "resource" {
-  description = "id of an aws_api_gateway_resource resource"
+variable "resources" {
+  description = "List of the ids of an aws_api_gateway_resource resource"
+  type = "list"
 }
 
 variable "methods" {
@@ -28,12 +30,4 @@ variable "headers" {
 variable "discard_default_headers" {
   default     = false
   description = "When set to true to it discards the default permitted headers and only includes those explicitly defined"
-}
-
-locals {
-  methodOptions  = "OPTIONS"
-  defaultHeaders = ["Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key", "X-Amz-Security-Token"]
-
-  methods = "${join(",", distinct(concat(var.methods, list(local.methodOptions))))}"
-  headers = "${var.discard_default_headers ? join(",", var.headers) : join(",", distinct(concat(var.headers, local.defaultHeaders)))}"
 }
