@@ -8,11 +8,11 @@ An example module usage, which allows `GET` and `POST` methods from any origin (
 
 ```
 module "example_cors" {
-  source  = "mewa/apigateway-cors/aws"
-  version = "1.0.0"
+  source  = "bridgecrewio/apigateway-cors/aws"
+  version = "1.1.0"
 
-  api = "${aws_api_gateway_rest_api.example.id}"
-  resource = "${aws_api_gateway_resource.example.id}"
+  api = aws_api_gateway_rest_api.example.id
+  resources = [aws_api_gateway_resource.example.id]
 
   methods = ["GET", "POST"]
 }
@@ -24,13 +24,13 @@ If you want to customize the allowed origin simply set the `origin` variable to 
 
 ```
 module "confirm_cors" {
-  source  = "mewa/apigateway-cors/aws"
-  version = "1.0.0"
+  source  = "bridgecrewio/apigateway-cors/aws"
+  version = "1.1.0"
 
-  api = "${aws_api_gateway_rest_api.example.id}"
-  resource = "${aws_api_gateway_resource.example.id}"
+  api = aws_api_gateway_rest_api.example.id
+  resources = [aws_api_gateway_resource.example.id]
 
-  methods = ["${aws_api_gateway_method.method01.http_method}", "${aws_api_gateway_method.method02.http_method}"]
+  methods = [aws_api_gateway_method.method01.http_method, aws_api_gateway_method.method02.http_method]
 
   origin = "https://example.com"
 }
@@ -42,11 +42,11 @@ You can also add other permitted headers, which will be appended to the default 
 
 ```
 module "confirm_cors" {
-  source  = "mewa/apigateway-cors/aws"
-  version = "1.0.0"
+  source  = "bridgecrewio/apigateway-cors/aws"
+  version = "1.1.0"
 
-  api = "${aws_api_gateway_rest_api.example.id}"
-  resource = "${aws_api_gateway_resource.example.id}"
+  api = aws_api_gateway_rest_api.example.id
+  resources = [aws_api_gateway_resource.example.id]
 
   methods = ["GET"]
 

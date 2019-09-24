@@ -1,20 +1,21 @@
 variable "enable" {
-  default = true
+  description = "Allows enabling this entire module, if you'd like it to be disabled for specific builds / cases"
+  default     = true
 }
 
 variable "api" {
-  description = "id of an aws_api_gateway_rest_api resource"
-  type = "string"
+  description = "ID of an aws_api_gateway_rest_api resource"
+  type        = "string"
 }
 
 variable "resources" {
-  description = "List of the ids of an aws_api_gateway_resource resource"
-  type = "list"
+  description = "List of the IDs of an aws_api_gateway_resource resource"
+  type        = "list"
 }
 
 variable "methods" {
-  type        = "list"
   description = "List of permitted HTTP methods. OPTIONS is added by default."
+  type        = "list"
 }
 
 variable "origin" {
@@ -28,6 +29,6 @@ variable "headers" {
 }
 
 variable "discard_default_headers" {
-  default     = false
   description = "When set to true to it discards the default permitted headers and only includes those explicitly defined"
+  default     = false
 }
